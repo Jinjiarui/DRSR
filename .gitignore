@@ -1,0 +1,9 @@
+/data
+/test/log
+*.out
+*.log
+*.ipynb
+*.init_list
+*.weights
+*.qrels
+.vscode/
