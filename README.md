@@ -6,6 +6,8 @@
   <br />
 </p>
 This is a `tensorflow` implementation of DRSA model. This is the experiment code in the following work:
+
+
 > A Deep Survival Model for Unbiased Ranking </br>
 Jiarui Jin, Yuchen Fang, Weinan Zhang, Kan Ren, Guorui Zhou, Jian Xu, Yong Yu, Jun Wang, Xiaoqiang Zhu, Kun Gai. </br>
 [SIGIR 2020 Oral](https://arxiv.org/pdf/2004.14714.pdf)
