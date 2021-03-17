@@ -431,7 +431,7 @@ class RNN(BaseModel):
             self.label_ph: self._test_batch.label,
             self.pair_ph: self._test_batch.pair}
         # calculate element_loss to represent point or pair loss
-        bias_click_rate, _bias_loss, _ = self.sess.run([self.prod_score, self._bias_loss, self._bias_train_op],
+        bias_click_rate, _bias_loss = self.sess.run([self.prod_score, self._bias_loss],
                                                            feed_dict=test_feed_dict)
         # calculate final list
         batch_bias_rank_list, batch_truth_rank_list = [], []
@@ -547,7 +547,7 @@ class RNN(BaseModel):
             # calculate final list
             batch_bias_rank_list, batch_truth_rank_list = [], []
             if self.is_bias:
-                bias_click_rate, _bias_loss, _ = self.sess.run([self.rnn_tf, self._bias_loss, self._bias_train_op], feed_dict=test_feed_dict)
+                bias_click_rate, _bias_loss, = self.sess.run([self.rnn_tf, self._bias_loss], feed_dict=test_feed_dict)
                 for _bias in bias_click_rate:
                     _bias_rank_list = list(range(len(_bias)))
                     _bias_rank_map = zip(_bias_rank_list, _bias)
@@ -556,7 +556,7 @@ class RNN(BaseModel):
                     batch_bias_rank_list.append(_bias_rank_list)
                 bias_rank_list.append(batch_bias_rank_list)
             if self.is_truth:
-                truth_click_rate, _truth_loss, _ = self.sess.run([self.rnn_tf, self._truth_loss, self._truth_train_op], feed_dict=test_feed_dict)
+                truth_click_rate, _truth_loss = self.sess.run([self.rnn_tf, self._truth_loss], feed_dict=test_feed_dict)
                 for _truth in truth_click_rate:
                     _truth_rank_list = list(range(len(_truth)))
                     _truth_rank_map = zip(_truth_rank_list, _truth)
